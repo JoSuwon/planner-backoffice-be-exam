@@ -12,6 +12,7 @@ import com.planner.backoffice.annotation.RequireAdminToken;
 import com.planner.backoffice.dto.SearchConditionRequest;
 import com.planner.backoffice.model.Poi;
 import com.planner.backoffice.repository.PoiRepository;
+import com.planner.backoffice.specification.PoiSpecification;
 
 @RestController
 @RequestMapping("/api/poi")
@@ -26,9 +27,8 @@ public class PoiController {
   @PostMapping("/search")
   @RequireAdminToken
   public Page<Poi> searchPois(@RequestBody SearchConditionRequest searchConditionRequest, Pageable pageable) {
-    System.out.println(searchConditionRequest);
-    PageRequest pageRequest = PageRequest.of(1, 10);
-    Page<Poi> pois = this.poiRepository.findAll(pageRequest);
-    return pois;
+    return poiRepository.findAll(
+        PoiSpecification.searchCondition(searchConditionRequest),
+        pageable);
   }
 }
