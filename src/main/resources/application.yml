@@ -1,0 +1,24 @@
+spring:
+  application:
+    name: backoffice
+  datasource:
+    url: jdbc:postgresql://${DB_HOST}:5432/${DB_NAME}
+    username: ${DB_USERNAME}
+    password: ${DB_PASSWORD}
+  jpa:
+    show-sql: true
+    hibernate:
+      ddl-auto: validate
+    properties:
+      hibernate:
+        format_sql: true
+
+logging:
+  level:
+    org.springframework.web: DEBUG
+
+server:
+  forward-headers-strategy: native
+
+BACKOFFICE_ADMIN_SALT: ${BACKOFFICE_ADMIN_SALT}
+JWT_SECRET: ${JWT_SECRET}

@@ -1,0 +1,17 @@
+spring:
+  application:
+    name: backoffice
+  datasource:
+    url: jdbc:postgresql://localhost:5432/minimalweb
+    username: minimalwebuser
+    password: minimalwebuserpassword
+  jpa:
+    show-sql: true
+    properties:
+      hibernate:
+        format_sql: true
+
+logging:
+  level:
+    root: INFO
+    com.planner.backoffice: DEBUG
